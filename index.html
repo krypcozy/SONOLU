@@ -1,0 +1,1486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SONO | Sonoluminescence — The Harmony of Sound & Light</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&family=Orbitron:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #c9a84c;
+    --gold-bright: #f0d060;
+    --gold-dim: #7a5e20;
+    --teal: #00e5cc;
+    --teal-dim: #007a6e;
+    --deep: #020a14;
+    --mid: #061220;
+    --surface: #0a1e30;
+    --surface2: #0f2840;
+    --text: #d8e8f0;
+    --text-dim: #7a9ab0;
+    --white: #ffffff;
+    --orange-glow: #e8640a;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--deep);
+    color: var(--text);
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* STAR FIELD BG */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(1px 1px at 20% 30%, rgba(255,255,255,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 80% 10%, rgba(255,255,255,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 50% 70%, rgba(255,255,255,0.4) 0%, transparent 100%),
+      radial-gradient(1px 1px at 10% 80%, rgba(255,255,255,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 90% 60%, rgba(255,255,255,0.3) 0%, transparent 100%),
+      radial-gradient(1px 1px at 35% 50%, rgba(200,168,76,0.3) 0%, transparent 100%),
+      radial-gradient(1px 1px at 70% 40%, rgba(0,229,204,0.3) 0%, transparent 100%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 1000;
+    background: rgba(2,10,20,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(201,168,76,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2rem;
+    height: 64px;
+  }
+
+  .nav-logo {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 4px;
+    text-decoration: none;
+  }
+
+  .nav-logo span { color: var(--teal); }
+
+  .nav-links {
+    display: flex;
+    gap: 0;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: var(--text-dim);
+    text-decoration: none;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 0.4rem 0.9rem;
+    transition: color 0.2s;
+    border-bottom: 2px solid transparent;
+  }
+
+  .nav-links a:hover {
+    color: var(--gold);
+    border-bottom-color: var(--gold);
+  }
+
+  .nav-cta {
+    background: linear-gradient(135deg, var(--gold-dim), var(--gold));
+    color: var(--deep) !important;
+    border-radius: 4px;
+    padding: 0.45rem 1.1rem !important;
+    font-weight: 700 !important;
+    border-bottom: none !important;
+  }
+
+  .nav-cta:hover { background: linear-gradient(135deg, var(--gold), var(--gold-bright)) !important; }
+
+  /* HERO */
+  #hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 6rem 2rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-orb {
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 40% 40%, rgba(232,100,10,0.25) 0%, rgba(201,168,76,0.15) 30%, rgba(0,229,204,0.08) 60%, transparent 80%);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: orbPulse 4s ease-in-out infinite;
+    pointer-events: none;
+  }
+
+  @keyframes orbPulse {
+    0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.7; }
+    50% { transform: translate(-50%, -50%) scale(1.08); opacity: 1; }
+  }
+
+  .sono-badge {
+    display: inline-block;
+    background: rgba(201,168,76,0.1);
+    border: 1px solid rgba(201,168,76,0.4);
+    color: var(--gold);
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    padding: 0.3rem 1rem;
+    border-radius: 20px;
+    margin-bottom: 1.5rem;
+    animation: fadeDown 0.8s ease forwards;
+  }
+
+  @keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-title {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: clamp(2.2rem, 6vw, 5rem);
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 0.5rem;
+    animation: fadeUp 0.9s 0.2s ease both;
+  }
+
+  .hero-title .sono { color: var(--gold); }
+  .hero-title .lumi { color: var(--teal); }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-sub {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-bottom: 1.5rem;
+    animation: fadeUp 0.9s 0.4s ease both;
+  }
+
+  .hero-desc {
+    max-width: 600px;
+    font-size: 1.05rem;
+    color: var(--text-dim);
+    margin-bottom: 2.5rem;
+    animation: fadeUp 0.9s 0.5s ease both;
+    line-height: 1.7;
+  }
+
+  .hero-btns {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    animation: fadeUp 0.9s 0.6s ease both;
+  }
+
+  .btn-primary {
+    background: linear-gradient(135deg, rgba(201,168,76,0.2), rgba(201,168,76,0.4));
+    border: 1px solid var(--gold);
+    color: var(--gold-bright);
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: 0.9rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 0.8rem 2rem;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.25s;
+    display: inline-block;
+  }
+
+  .btn-primary:hover {
+    background: linear-gradient(135deg, rgba(201,168,76,0.4), rgba(201,168,76,0.6));
+    transform: translateY(-2px);
+  }
+
+  .btn-outline {
+    background: transparent;
+    border: 1px solid rgba(0,229,204,0.5);
+    color: var(--teal);
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: 0.9rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 0.8rem 2rem;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.25s;
+    display: inline-block;
+  }
+
+  .btn-outline:hover {
+    background: rgba(0,229,204,0.1);
+    transform: translateY(-2px);
+  }
+
+  .sound-wave {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    justify-content: center;
+    margin-top: 3rem;
+    animation: fadeUp 0.9s 0.8s ease both;
+  }
+
+  .wave-bar {
+    width: 3px;
+    background: var(--teal);
+    border-radius: 2px;
+    animation: wave 1.2s ease-in-out infinite;
+  }
+
+  .wave-bar:nth-child(1) { height: 8px; animation-delay: 0s; }
+  .wave-bar:nth-child(2) { height: 16px; animation-delay: 0.1s; }
+  .wave-bar:nth-child(3) { height: 24px; animation-delay: 0.2s; }
+  .wave-bar:nth-child(4) { height: 32px; animation-delay: 0.3s; }
+  .wave-bar:nth-child(5) { height: 40px; animation-delay: 0.2s; }
+  .wave-bar:nth-child(6) { height: 32px; animation-delay: 0.1s; }
+  .wave-bar:nth-child(7) { height: 24px; animation-delay: 0s; }
+  .wave-bar:nth-child(8) { height: 16px; animation-delay: 0.1s; }
+  .wave-bar:nth-child(9) { height: 8px; animation-delay: 0.2s; }
+
+  @keyframes wave {
+    0%, 100% { transform: scaleY(0.4); opacity: 0.5; }
+    50% { transform: scaleY(1); opacity: 1; }
+  }
+
+  /* SECTIONS */
+  section { position: relative; z-index: 1; }
+
+  .section-pad { padding: 5rem 2rem; }
+
+  .container { max-width: 1100px; margin: 0 auto; }
+
+  .section-label {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+
+  .section-title {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: clamp(1.4rem, 3vw, 2.2rem);
+    font-weight: 700;
+    color: var(--gold);
+    margin-bottom: 1rem;
+    line-height: 1.2;
+  }
+
+  .divider {
+    width: 60px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--gold), var(--teal));
+    margin-bottom: 2.5rem;
+  }
+
+  /* ABOUT */
+  #about { background: var(--mid); }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .about-text p {
+    color: var(--text-dim);
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    line-height: 1.8;
+  }
+
+  .about-text p strong { color: var(--gold); font-weight: 600; }
+
+  .about-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  .stat-card {
+    background: var(--surface);
+    border: 1px solid rgba(201,168,76,0.2);
+    border-radius: 8px;
+    padding: 1.5rem;
+    text-align: center;
+    transition: border-color 0.2s;
+  }
+
+  .stat-card:hover { border-color: rgba(201,168,76,0.5); }
+
+  .stat-num {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--gold);
+    display: block;
+  }
+
+  .stat-label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-dim);
+  }
+
+  /* TOKENOMICS */
+  #tokenomics { background: var(--deep); }
+
+  .token-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+  }
+
+  .token-card {
+    background: var(--surface);
+    border: 1px solid rgba(201,168,76,0.15);
+    border-radius: 8px;
+    padding: 1.5rem;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+
+  .token-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--gold-dim), var(--gold));
+  }
+
+  .token-card:hover {
+    border-color: rgba(201,168,76,0.4);
+    transform: translateY(-4px);
+  }
+
+  .token-pct {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--gold);
+    display: block;
+    margin-bottom: 0.25rem;
+  }
+
+  .token-name {
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--text);
+    letter-spacing: 1px;
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+
+  .token-desc {
+    font-size: 0.82rem;
+    color: var(--text-dim);
+    line-height: 1.5;
+  }
+
+  .token-bar-wrap {
+    margin-top: 3rem;
+  }
+
+  .token-bar-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    color: var(--text-dim);
+    margin-bottom: 0.4rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+  }
+
+  .token-bar {
+    height: 12px;
+    background: var(--surface2);
+    border-radius: 6px;
+    margin-bottom: 0.8rem;
+    overflow: hidden;
+  }
+
+  .token-bar-fill {
+    height: 100%;
+    border-radius: 6px;
+    background: linear-gradient(90deg, var(--gold-dim), var(--gold));
+    position: relative;
+    animation: barGrow 1.2s ease forwards;
+    transform-origin: left;
+  }
+
+  @keyframes barGrow {
+    from { transform: scaleX(0); }
+    to { transform: scaleX(1); }
+  }
+
+  .bar-teal { background: linear-gradient(90deg, var(--teal-dim), var(--teal)); }
+  .bar-orange { background: linear-gradient(90deg, #8a3800, var(--orange-glow)); }
+
+  /* ROADMAP */
+  #roadmap { background: var(--mid); }
+
+  .roadmap-timeline {
+    position: relative;
+    padding-left: 2rem;
+  }
+
+  .roadmap-timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0; bottom: 0;
+    width: 2px;
+    background: linear-gradient(180deg, var(--gold), var(--teal), rgba(0,229,204,0.1));
+  }
+
+  .roadmap-item {
+    position: relative;
+    margin-bottom: 3rem;
+    padding-left: 2rem;
+  }
+
+  .roadmap-dot {
+    position: absolute;
+    left: -2.55rem;
+    top: 0.2rem;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--gold);
+    border: 3px solid var(--mid);
+    box-shadow: 0 0 12px rgba(201,168,76,0.6);
+  }
+
+  .roadmap-dot.teal {
+    background: var(--teal);
+    box-shadow: 0 0 12px rgba(0,229,204,0.6);
+  }
+
+  .roadmap-phase {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 0.3rem;
+    display: block;
+  }
+
+  .roadmap-title {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--gold);
+    margin-bottom: 0.5rem;
+  }
+
+  .roadmap-body {
+    color: var(--text-dim);
+    font-size: 0.95rem;
+    line-height: 1.7;
+    max-width: 700px;
+  }
+
+  .roadmap-body ul { padding-left: 1.2rem; margin-top: 0.4rem; }
+  .roadmap-body li { margin-bottom: 0.3rem; }
+
+  .roadmap-tag {
+    display: inline-block;
+    background: rgba(201,168,76,0.1);
+    border: 1px solid rgba(201,168,76,0.3);
+    color: var(--gold);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    padding: 0.2rem 0.6rem;
+    border-radius: 3px;
+    margin-right: 0.4rem;
+    margin-top: 0.5rem;
+  }
+
+  /* UCLA DONATION */
+  #ucla { background: var(--deep); }
+
+  .ucla-box {
+    background: linear-gradient(135deg, rgba(201,168,76,0.06), rgba(0,229,204,0.04));
+    border: 1px solid rgba(201,168,76,0.25);
+    border-radius: 12px;
+    padding: 3rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+  }
+
+  .ucla-pct {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 4rem;
+    font-weight: 900;
+    color: var(--gold);
+    display: block;
+    line-height: 1;
+  }
+
+  .ucla-label {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-top: 0.3rem;
+    display: block;
+  }
+
+  .ucla-sub {
+    color: var(--text-dim);
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+    line-height: 1.6;
+  }
+
+  .ucla-points { list-style: none; }
+
+  .ucla-points li {
+    padding: 0.6rem 0;
+    border-bottom: 1px solid rgba(201,168,76,0.1);
+    color: var(--text-dim);
+    font-size: 0.95rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+  }
+
+  .ucla-points li::before {
+    content: '◆';
+    color: var(--gold);
+    font-size: 0.6rem;
+    margin-top: 5px;
+    flex-shrink: 0;
+  }
+
+  /* CHART */
+  #chart-section { background: var(--mid); }
+
+  .dex-embed {
+    background: var(--surface);
+    border: 1px solid rgba(201,168,76,0.2);
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .dex-header {
+    background: var(--surface2);
+    border-bottom: 1px solid rgba(201,168,76,0.15);
+    padding: 1rem 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .dex-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 2px;
+  }
+
+  .live-dot {
+    width: 8px;
+    height: 8px;
+    background: #00e84a;
+    border-radius: 50%;
+    animation: livePulse 1.5s ease-in-out infinite;
+  }
+
+  @keyframes livePulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(1.3); }
+  }
+
+  .dex-frame {
+    width: 100%;
+    height: 500px;
+    border: none;
+    display: block;
+  }
+
+  /* EVENTS */
+  #events { background: var(--deep); }
+
+  .events-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .event-card {
+    background: var(--surface);
+    border: 1px solid rgba(201,168,76,0.15);
+    border-radius: 8px;
+    padding: 1.5rem;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+
+  .event-card:hover {
+    border-color: rgba(201,168,76,0.4);
+    transform: translateY(-4px);
+  }
+
+  .event-date {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--teal);
+    letter-spacing: 2px;
+    margin-bottom: 0.5rem;
+  }
+
+  .event-name {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--gold);
+    margin-bottom: 0.5rem;
+  }
+
+  .event-desc {
+    font-size: 0.9rem;
+    color: var(--text-dim);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+
+  .event-badge {
+    display: inline-block;
+    background: rgba(0,229,204,0.1);
+    border: 1px solid rgba(0,229,204,0.3);
+    color: var(--teal);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 0.2rem 0.6rem;
+    border-radius: 3px;
+  }
+
+  /* BLOG */
+  #blog { background: var(--mid); }
+
+  .blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .blog-card {
+    background: var(--surface);
+    border: 1px solid rgba(201,168,76,0.1);
+    border-radius: 8px;
+    padding: 1.5rem;
+    cursor: pointer;
+    transition: border-color 0.2s, transform 0.2s;
+    text-decoration: none;
+    display: block;
+  }
+
+  .blog-card:hover {
+    border-color: rgba(201,168,76,0.35);
+    transform: translateY(-4px);
+  }
+
+  .blog-cat {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+
+  .blog-title {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 0.5rem;
+    line-height: 1.4;
+  }
+
+  .blog-excerpt {
+    font-size: 0.88rem;
+    color: var(--text-dim);
+    line-height: 1.6;
+  }
+
+  .blog-meta {
+    margin-top: 1rem;
+    font-size: 0.78rem;
+    color: var(--gold-dim);
+    font-weight: 600;
+    letter-spacing: 1px;
+  }
+
+  /* DONATE */
+  #donate { background: var(--deep); }
+
+  .donate-wrap {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .donate-amounts {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .amount-btn {
+    background: var(--surface);
+    border: 1px solid rgba(201,168,76,0.25);
+    color: var(--gold);
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    padding: 0.9rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-align: center;
+  }
+
+  .amount-btn:hover, .amount-btn.active {
+    background: rgba(201,168,76,0.15);
+    border-color: var(--gold);
+  }
+
+  .donate-freq {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .freq-btn {
+    flex: 1;
+    background: var(--surface);
+    border: 1px solid rgba(201,168,76,0.15);
+    color: var(--text-dim);
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 0.6rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .freq-btn.active {
+    background: rgba(201,168,76,0.15);
+    border-color: var(--gold);
+    color: var(--gold);
+  }
+
+  /* COMMUNITY */
+  #community { background: var(--mid); }
+
+  .socials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .social-card {
+    background: var(--surface);
+    border: 1px solid rgba(201,168,76,0.1);
+    border-radius: 8px;
+    padding: 1.5rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-decoration: none;
+    display: block;
+  }
+
+  .social-card:hover {
+    border-color: var(--gold);
+    transform: translateY(-4px);
+    background: rgba(201,168,76,0.05);
+  }
+
+  .social-icon {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+
+  .social-name {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--gold);
+    letter-spacing: 2px;
+    display: block;
+  }
+
+  .social-handle {
+    font-size: 0.82rem;
+    color: var(--text-dim);
+  }
+
+  /* FOOTER */
+  footer {
+    background: rgba(0,0,0,0.5);
+    border-top: 1px solid rgba(201,168,76,0.2);
+    padding: 3rem 2rem 2rem;
+    text-align: center;
+  }
+
+  .footer-logo {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 1.5rem;
+    color: var(--gold);
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+
+  .footer-tagline {
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 4px;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+  }
+
+  .footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.3rem 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .footer-links a {
+    color: var(--text-dim);
+    text-decoration: none;
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover { color: var(--gold); }
+
+  .footer-copy {
+    font-size: 0.78rem;
+    color: var(--gold-dim);
+    letter-spacing: 1px;
+  }
+
+  /* SCROLL REVEAL */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* MOBILE */
+  @media (max-width: 768px) {
+    nav { padding: 0 1rem; }
+    .nav-links { display: none; }
+    .about-grid, .donate-wrap, .ucla-box { grid-template-columns: 1fr; gap: 2rem; }
+    .hero-title { font-size: 2rem; }
+    .section-pad { padding: 3rem 1rem; }
+  }
+
+  /* MANTIS SHRIMP ASCII DECO */
+  .deco-text {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.6rem;
+    color: rgba(201,168,76,0.12);
+    letter-spacing: 3px;
+    text-align: center;
+    padding: 0.5rem 0;
+    user-select: none;
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-logo">SONO<span>LX</span></a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#tokenomics">Tokenomics</a></li>
+    <li><a href="#roadmap">Roadmap</a></li>
+    <li><a href="#chart-section">Live Chart</a></li>
+    <li><a href="/events">Events</a></li>
+    <li><a href="#blog">Blog</a></li>
+    <li><a href="/notifications">Notifications</a></li>
+    <li><a href="#donate">Donate</a></li>
+    <li><a href="https://t.me/+CwgUnByYQjRiOWVh" target="_blank" class="nav-cta">Join Now</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-orb"></div>
+  <span class="sono-badge">⬡ SONO Research Initiative ⬡ Mantis Shrimp Token</span>
+  <h1 class="hero-title">
+    <span class="sono">SONO</span><span class="lumi">LUMINESCENCE</span>
+  </h1>
+  <p class="hero-sub">The Harmony of Sound &amp; Light</p>
+  <p class="hero-desc">
+    The world's first meme coin powered by pure acoustic pressure. Where sound collapses bubbles into light hotter than the sun — and community collapses doubt into pure market energy.
+  </p>
+  <div class="hero-btns">
+    <a href="https://t.me/+CwgUnByYQjRiOWVh" target="_blank" class="btn-primary">⚡ Join the Army</a>
+    <a href="#tokenomics" class="btn-outline">View Tokenomics</a>
+    <a href="#chart-section" class="btn-outline">Live Chart ↗</a>
+  </div>
+  <div class="sound-wave">
+    <div class="wave-bar"></div>
+    <div class="wave-bar"></div>
+    <div class="wave-bar"></div>
+    <div class="wave-bar"></div>
+    <div class="wave-bar"></div>
+    <div class="wave-bar"></div>
+    <div class="wave-bar"></div>
+    <div class="wave-bar"></div>
+    <div class="wave-bar"></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="section-pad">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <span class="section-label">What Is This</span>
+        <h2 class="section-title">Sound Creates Light</h2>
+        <div class="divider"></div>
+        <p>
+          <strong>Sonoluminescence</strong> is a mind-blowing physics phenomenon where sound waves collapse microscopic bubbles, causing a violent implosion that hits temperatures <strong>hotter than the surface of the sun</strong> — and flashes literal light.
+        </p>
+        <p>
+          We built this <strong>mantis shrimp coin</strong> from the ground up as a tight-knit community tired of corporate tokens and developer dumps. Driven by pure organic hype, fueled by a relentless army, and locked for ultimate safety.
+        </p>
+        <p>
+          Every transaction contributes to real <strong>UCLA sonoluminescence research</strong>, making this the first meme coin with direct scientific impact. Sound becomes light. Community becomes capital.
+        </p>
+        <div style="margin-top:1.5rem;">
+          <a href="https://t.me/+CwgUnByYQjRiOWVh" target="_blank" class="btn-primary">Join the Movement</a>
+        </div>
+      </div>
+      <div class="about-stats reveal" style="transition-delay: 0.2s;">
+        <div class="stat-card">
+          <span class="stat-num">10%</span>
+          <span class="stat-label">UCLA Donation</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-num">100B</span>
+          <span class="stat-label">Total Supply</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-num">SOL</span>
+          <span class="stat-label">Blockchain</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-num">0%</span>
+          <span class="stat-label">Dev Tax</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TOKENOMICS -->
+<section id="tokenomics" class="section-pad">
+  <div class="container">
+    <span class="section-label">Token Distribution</span>
+    <h2 class="section-title">Tokenomics</h2>
+    <div class="divider"></div>
+
+    <div class="token-grid reveal">
+      <div class="token-card">
+        <span class="token-pct">10%</span>
+        <span class="token-name">Public / Private Sale</span>
+        <span class="token-desc">Early supporters. Funds legal setup, smart contract audits, and core physics engineering. UCLA 10% trigger activates here.</span>
+      </div>
+      <div class="token-card">
+        <span class="token-pct">40–50%</span>
+        <span class="token-name">Community &amp; Research Rewards</span>
+        <span class="token-desc">Locked until Phase 2. Distributed to users who upload verified lab data or contribute GPU computing power to the simulation network.</span>
+      </div>
+      <div class="token-card">
+        <span class="token-pct">20–25%</span>
+        <span class="token-name">Ecosystem Foundation</span>
+        <span class="token-desc">Managed by a decentralized treasury. Funds marketing, cloud hosting, external lab grants, and research hackathons.</span>
+      </div>
+      <div class="token-card">
+        <span class="token-pct">15–20%</span>
+        <span class="token-name">Founders &amp; Core Team</span>
+        <span class="token-desc">Long-term vesting only beginning once commercial milestones are achieved. No quick exits. The team stays until it works.</span>
+      </div>
+      <div class="token-card">
+        <span class="token-pct">10%</span>
+        <span class="token-name">UCLA Gift</span>
+        <span class="token-desc">Every early transaction or fundraising immediately routes 10% to the designated UCLA Technology Development Group fund.</span>
+      </div>
+    </div>
+
+    <div class="token-bar-wrap reveal" style="transition-delay: 0.2s;">
+      <div class="token-bar-label"><span>Community &amp; Research (45%)</span><span>45%</span></div>
+      <div class="token-bar"><div class="token-bar-fill" style="width:45%"></div></div>
+
+      <div class="token-bar-label"><span>Ecosystem Foundation (22%)</span><span>22%</span></div>
+      <div class="token-bar"><div class="token-bar-fill bar-teal" style="width:22%"></div></div>
+
+      <div class="token-bar-label"><span>Core Team (17%)</span><span>17%</span></div>
+      <div class="token-bar"><div class="token-bar-fill bar-orange" style="width:17%"></div></div>
+
+      <div class="token-bar-label"><span>Public Sale (10%)</span><span>10%</span></div>
+      <div class="token-bar"><div class="token-bar-fill" style="width:10%"></div></div>
+
+      <div class="token-bar-label"><span>UCLA Donation (10%)</span><span>10%</span></div>
+      <div class="token-bar"><div class="token-bar-fill bar-teal" style="width:10%"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ROADMAP -->
+<section id="roadmap" class="section-pad">
+  <div class="container">
+    <span class="section-label">Project Timeline</span>
+    <h2 class="section-title">Roadmap</h2>
+    <div class="divider"></div>
+
+    <div class="roadmap-timeline">
+      <div class="roadmap-item reveal">
+        <div class="roadmap-dot"></div>
+        <span class="roadmap-phase">Phase 1 · Q1–Q2</span>
+        <div class="roadmap-title">Foundation &amp; The UCLA Integration</div>
+        <div class="roadmap-body">
+          <p>Launch the project website, publish the scientific whitepaper, and sign the official gift agreement with the UCLA Technology Development Group. Smart Contract Audit completed. Private seed sale opens.</p>
+          <ul>
+            <li>First 10% allocation routed to UCLA</li>
+            <li>Smart contract audit &amp; UCLA gift setup</li>
+            <li>Protocol tax activates — every transaction routes 10% to UCLA fund</li>
+          </ul>
+          <span class="roadmap-tag">WEBSITE LAUNCH</span>
+          <span class="roadmap-tag">WHITEPAPER</span>
+          <span class="roadmap-tag">UCLA GIFT</span>
+          <span class="roadmap-tag">AUDIT</span>
+        </div>
+      </div>
+
+      <div class="roadmap-item reveal" style="transition-delay: 0.1s;">
+        <div class="roadmap-dot teal"></div>
+        <span class="roadmap-phase">Phase 2 · Q3–Q4</span>
+        <div class="roadmap-title">Platform Launch &amp; Data Mining</div>
+        <div class="roadmap-body">
+          <p>Release the open-access sonoluminescence database and launch the distributed computing network for cavitation simulation. Community rewards contract activates. Transaction volume increases donation flow.</p>
+          <ul>
+            <li>Open-access sonoluminescence database live</li>
+            <li>Distributed GPU computing network for cavitation simulation</li>
+            <li>40–50% community tokens unlock progressively</li>
+          </ul>
+          <span class="roadmap-tag">DATABASE</span>
+          <span class="roadmap-tag">LIVE SIMULATION NETWORK</span>
+          <span class="roadmap-tag">REWARDS</span>
+        </div>
+      </div>
+
+      <div class="roadmap-item reveal" style="transition-delay: 0.2s;">
+        <div class="roadmap-dot"></div>
+        <span class="roadmap-phase">Phase 3 · Year 2</span>
+        <div class="roadmap-title">Multi-Bubble Sonoluminescence (MBSL) Scale-Up</div>
+        <div class="roadmap-body">
+          <p>Fund external physics labs, host sonoluminescence research hackathons, and upgrade hardware infrastructure. Joint publication opportunities with UCLA.</p>
+          <ul>
+            <li>Ecosystem foundation funds unlocked via decentralized treasury</li>
+            <li>External lab grants and research hackathons</li>
+            <li>Joint publication with UCLA researchers</li>
+          </ul>
+          <span class="roadmap-tag">GRANTS</span>
+          <span class="roadmap-tag">HACKATHONS</span>
+          <span class="roadmap-tag">UCLA PUBLICATION</span>
+        </div>
+      </div>
+
+      <div class="roadmap-item reveal" style="transition-delay: 0.3s;">
+        <div class="roadmap-dot teal"></div>
+        <span class="roadmap-phase">Phase 4 · Year 3+</span>
+        <div class="roadmap-title">Commercial Sonochemical Licensing</div>
+        <div class="roadmap-body">
+          <p>Scale up sonochemical reactor models, explore commercial cleantech applications, and achieve fully decentralized governance. Core team vesting begins.</p>
+          <ul>
+            <li>Sonochemical reactor models at commercial scale</li>
+            <li>Clean tech licensing opportunities</li>
+            <li>Full DAO governance transition</li>
+          </ul>
+          <span class="roadmap-tag">CLEANTECH</span>
+          <span class="roadmap-tag">DAO</span>
+          <span class="roadmap-tag">VESTING BEGINS</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- UCLA SECTION -->
+<section id="ucla" class="section-pad">
+  <div class="container">
+    <span class="section-label">Scientific Partnership</span>
+    <h2 class="section-title">The UCLA Connection</h2>
+    <div class="divider"></div>
+
+    <div class="ucla-box reveal">
+      <div>
+        <span class="ucla-pct">10%</span>
+        <span class="ucla-label">Routes to UCLA Research</span>
+        <p class="ucla-sub">Every transaction triggers an automatic 10% donation to the UCLA Technology Development Group, funding real sonoluminescence research and acoustic physics breakthroughs.</p>
+        <div style="margin-top:1.5rem;">
+          <a href="#donate" class="btn-primary">Support the Research</a>
+        </div>
+      </div>
+      <div>
+        <ul class="ucla-points">
+          <li>Smart contract enforced — cannot be bypassed or turned off</li>
+          <li>First 10% of all early fundraising routed immediately</li>
+          <li>Quarterly public reporting on funds usage</li>
+          <li>Joint publication opportunities with UCLA physics team</li>
+          <li>Seed sale opens with UCLA gift agreement already signed</li>
+          <li>Research goals: sonochemical reactors, SBSL / MBSL studies, cleantech</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LIVE CHART -->
+<section id="chart-section" class="section-pad">
+  <div class="container">
+    <span class="section-label">Market Data</span>
+    <h2 class="section-title">Live Chart</h2>
+    <div class="divider"></div>
+
+    <div class="dex-embed reveal">
+      <div class="dex-header">
+        <div class="live-dot"></div>
+        <span class="dex-title">SONO / USD — DEXSCREENER</span>
+        <span style="font-size:0.75rem; color:var(--text-dim); margin-left:auto; font-family:'Rajdhani',sans-serif; letter-spacing:2px;">POWERED BY DEXSCREENER</span>
+      </div>
+      <iframe
+        class="dex-frame"
+        src="https://dexscreener.com/solana?embed=1&theme=dark&trades=0&info=0"
+        title="DexScreener Live Chart"
+        allowfullscreen
+      ></iframe>
+    </div>
+
+    <p style="text-align:center; color:var(--text-dim); font-size:0.82rem; margin-top:1rem; letter-spacing:1px;">
+      Once the token contract is live, replace the embed URL above with your specific contract address for the SONO chart.
+    </p>
+  </div>
+</section>
+
+<!-- EVENTS -->
+<section id="events" class="section-pad">
+  <div class="container">
+    <span class="section-label">Upcoming</span>
+    <h2 class="section-title">Events</h2>
+    <div class="divider"></div>
+
+    <div class="events-grid">
+      <div class="event-card reveal">
+        <div class="event-date">JUN 27, 2025 · TWITTER / TIKTOK</div>
+        <div class="event-name">💥 Sonoluminescence Coin Launch Party</div>
+        <p class="event-desc">The acoustic pressure has reached critical mass. Official token launch event — the sonoluminescent bubble implodes into pure market energy. The exact launch hour, contract address, and early portal access will drop inside our main Telegram group first.</p>
+        <span class="event-badge">RSVP OPEN</span>
+        <div style="margin-top:1rem;">
+          <a href="/event-details/sonoluminescence-coin-launch-party" class="btn-outline" style="font-size:0.78rem; padding:0.5rem 1.2rem;">RSVP ↗</a>
+        </div>
+      </div>
+      <div class="event-card reveal" style="transition-delay:0.1s;">
+        <div class="event-date">Q3 2025 · ONLINE</div>
+        <div class="event-name">🔬 Database Beta Launch</div>
+        <p class="event-desc">The open-access sonoluminescence database goes live. Early contributors can upload verified lab data and start earning community reward tokens. GPU contributors welcome.</p>
+        <span class="event-badge">UPCOMING</span>
+      </div>
+      <div class="event-card reveal" style="transition-delay:0.2s;">
+        <div class="event-date">YEAR 2 · GLOBAL</div>
+        <div class="event-name">🏆 MBSL Research Hackathon</div>
+        <p class="event-desc">The first sonoluminescence research hackathon funded by the SONO ecosystem treasury. Teams worldwide compete for grants and token rewards to advance MBSL science.</p>
+        <span class="event-badge">TBA</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BLOG -->
+<section id="blog" class="section-pad">
+  <div class="container">
+    <span class="section-label">Latest</span>
+    <h2 class="section-title">Blog &amp; Updates</h2>
+    <div class="divider"></div>
+
+    <div class="blog-grid">
+      <a href="/blog" class="blog-card reveal">
+        <span class="blog-cat">Community Update</span>
+        <div class="blog-title">Join the Sonoluminescence Community: Launch Updates Inside</div>
+        <p class="blog-excerpt">Sonoluminescence is a captivating phenomenon that has intrigued scientists and enthusiasts alike. It involves the emission of short bursts of light from tiny gas bubbles in a liquid when exposed to intense sound waves...</p>
+        <div class="blog-meta">By Juju Baby · Recent</div>
+      </a>
+      <div class="blog-card reveal" style="transition-delay:0.1s;">
+        <span class="blog-cat">Science</span>
+        <div class="blog-title">How Sonoluminescence Creates Temperatures Hotter Than The Sun</div>
+        <p class="blog-excerpt">When ultrasonic waves pass through a liquid, they create micro-bubbles that violently collapse — generating a brief flash of light and extreme temperatures. This is the physical force powering our token economy.</p>
+        <div class="blog-meta">SONO Research Team · TBA</div>
+      </div>
+      <div class="blog-card reveal" style="transition-delay:0.2s;">
+        <span class="blog-cat">Tokenomics Deep Dive</span>
+        <div class="blog-title">Why 10% Goes to UCLA: The Smart Contract Mechanism Explained</div>
+        <p class="blog-excerpt">Every transaction in the SONO ecosystem is wired at the contract level to route a portion of value directly to UCLA's sonoluminescence research fund. Here's exactly how that works and why it can't be changed.</p>
+        <div class="blog-meta">SONO Research Team · TBA</div>
+      </div>
+    </div>
+
+    <div style="text-align:center; margin-top:2.5rem;">
+      <a href="/blog" class="btn-outline">View All Posts ↗</a>
+    </div>
+  </div>
+</section>
+
+<!-- DONATE -->
+<section id="donate" class="section-pad">
+  <div class="container">
+    <span class="section-label">Support Science</span>
+    <h2 class="section-title">Make a Difference</h2>
+    <div class="divider"></div>
+
+    <div class="donate-wrap">
+      <div class="reveal">
+        <p style="color:var(--text-dim); margin-bottom:1.5rem; font-size:1rem; line-height:1.7;">
+          Change starts with people like you. Your donation directly funds sonoluminescence research at UCLA and supports the broader SONO ecosystem. Every dollar brings us closer to unlocking the commercial potential of acoustic physics.
+        </p>
+        <h3 style="color:var(--gold); font-family:'Rajdhani',sans-serif; font-size:1.1rem; font-weight:700; letter-spacing:2px; margin-bottom:0.8rem; text-transform:uppercase;">Frequency</h3>
+        <div class="donate-freq">
+          <button class="freq-btn active" onclick="setFreq(this)">One Time</button>
+          <button class="freq-btn" onclick="setFreq(this)">Monthly</button>
+          <button class="freq-btn" onclick="setFreq(this)">Yearly</button>
+        </div>
+        <h3 style="color:var(--gold); font-family:'Rajdhani',sans-serif; font-size:1.1rem; font-weight:700; letter-spacing:2px; margin-bottom:0.8rem; text-transform:uppercase;">Amount</h3>
+        <div class="donate-amounts">
+          <button class="amount-btn active" onclick="setAmount(this,'$50')">$50</button>
+          <button class="amount-btn" onclick="setAmount(this,'$100')">$100</button>
+          <button class="amount-btn" onclick="setAmount(this,'$200')">$200</button>
+          <button class="amount-btn" onclick="setAmount(this,'$1,000')">$1,000</button>
+        </div>
+        <a href="/donate" class="btn-primary" id="donate-btn">Donate $50 →</a>
+      </div>
+      <div class="reveal" style="transition-delay:0.2s;">
+        <div style="background:var(--surface); border:1px solid rgba(201,168,76,0.2); border-radius:10px; padding:2rem;">
+          <h3 style="font-family:'Rajdhani',sans-serif; font-weight:700; color:var(--gold); font-size:1.1rem; letter-spacing:2px; text-transform:uppercase; margin-bottom:1rem;">Where Your Money Goes</h3>
+          <div style="margin-bottom:1rem;">
+            <div style="display:flex;justify-content:space-between; font-size:0.85rem; color:var(--text-dim); margin-bottom:0.3rem;"><span>UCLA Research Fund</span><span style="color:var(--gold);">50%</span></div>
+            <div style="height:6px; background:var(--surface2); border-radius:3px; overflow:hidden;"><div style="width:50%; height:100%; background:linear-gradient(90deg,var(--gold-dim),var(--gold));"></div></div>
+          </div>
+          <div style="margin-bottom:1rem;">
+            <div style="display:flex;justify-content:space-between; font-size:0.85rem; color:var(--text-dim); margin-bottom:0.3rem;"><span>Database Infrastructure</span><span style="color:var(--teal);">30%</span></div>
+            <div style="height:6px; background:var(--surface2); border-radius:3px; overflow:hidden;"><div style="width:30%; height:100%; background:linear-gradient(90deg,var(--teal-dim),var(--teal));"></div></div>
+          </div>
+          <div>
+            <div style="display:flex;justify-content:space-between; font-size:0.85rem; color:var(--text-dim); margin-bottom:0.3rem;"><span>Community Growth</span><span style="color:var(--orange-glow);">20%</span></div>
+            <div style="height:6px; background:var(--surface2); border-radius:3px; overflow:hidden;"><div style="width:20%; height:100%; background:linear-gradient(90deg,#8a3800,var(--orange-glow));"></div></div>
+          </div>
+          <p style="font-size:0.8rem; color:var(--text-dim); margin-top:1.5rem; line-height:1.6; border-top:1px solid rgba(201,168,76,0.1); padding-top:1rem;">
+            All donations are tracked transparently on-chain. Quarterly reports shared publicly with the community.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMMUNITY -->
+<section id="community" class="section-pad">
+  <div class="container">
+    <span class="section-label">Join Us</span>
+    <h2 class="section-title">Community</h2>
+    <div class="divider"></div>
+    <p style="color:var(--text-dim); max-width:600px; margin-bottom:2.5rem; line-height:1.7;">
+      Join the vibrant world of Sonoluminescence — where cryptocurrency enthusiasts, scientists, and acoustic physics nerds come together. Connect with like-minded individuals and elevate your journey.
+    </p>
+
+    <div class="socials-grid">
+      <a href="https://t.me/+CwgUnByYQjRiOWVh" target="_blank" class="social-card reveal">
+        <span class="social-icon">✈️</span>
+        <span class="social-name">Telegram</span>
+        <span class="social-handle">Main V2 Community</span>
+      </a>
+      <a href="https://t.me/+1TTXtF-OLcZkZGZh" target="_blank" class="social-card reveal" style="transition-delay:0.1s;">
+        <span class="social-icon">🏆</span>
+        <span class="social-name">Daily Contest</span>
+        <span class="social-handle">Win SOL Daily</span>
+      </a>
+      <a href="https://twitter.com" target="_blank" class="social-card reveal" style="transition-delay:0.2s;">
+        <span class="social-icon">𝕏</span>
+        <span class="social-name">Twitter / X</span>
+        <span class="social-handle">@SonolumToken</span>
+      </a>
+      <a href="https://www.tiktok.com" target="_blank" class="social-card reveal" style="transition-delay:0.3s;">
+        <span class="social-icon">🎵</span>
+        <span class="social-name">TikTok</span>
+        <span class="social-handle">@SonolumToken</span>
+      </a>
+      <a href="/groups" class="social-card reveal" style="transition-delay:0.4s;">
+        <span class="social-icon">👥</span>
+        <span class="social-name">Groups</span>
+        <span class="social-handle">Community Groups</span>
+      </a>
+      <a href="/members" class="social-card reveal" style="transition-delay:0.5s;">
+        <span class="social-icon">🔬</span>
+        <span class="social-name">Members</span>
+        <span class="social-handle">Research Army</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-logo">SONOLUMINESCENCE</span>
+  <p class="footer-tagline">The Harmony of Sound &amp; Light · SONO Research Initiative</p>
+  <nav class="footer-links">
+    <a href="#about">About</a>
+    <a href="#tokenomics">Tokenomics</a>
+    <a href="#roadmap">Roadmap</a>
+    <a href="#chart-section">Live Chart</a>
+    <a href="/events">Events</a>
+    <a href="/blog">Blog</a>
+    <a href="/donate">Donate</a>
+    <a href="/blank">Privacy Policy</a>
+    <a href="/blank">Terms &amp; Conditions</a>
+    <a href="/blank">Refund Policy</a>
+    <a href="/blank">Accessibility</a>
+  </nav>
+  <p class="footer-copy">© 2025 Sonoluminescence · SONO Token · Not Financial Advice · DYOR</p>
+</footer>
+
+<script>
+  // SCROLL REVEAL
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
+
+  // DONATE AMOUNT
+  function setAmount(btn, val) {
+    document.querySelectorAll('.amount-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('donate-btn').textContent = 'Donate ' + val + ' →';
+  }
+
+  // DONATE FREQ
+  function setFreq(btn) {
+    document.querySelectorAll('.freq-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  }
+
+  // NAV HIGHLIGHT
+  window.addEventListener('scroll', () => {
+    const sections = ['hero','about','tokenomics','roadmap','ucla','chart-section','events','blog','donate','community'];
+    const scrollPos = window.scrollY + 100;
+    sections.forEach(id => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      const top = el.offsetTop;
+      const bottom = top + el.offsetHeight;
+      if (scrollPos >= top && scrollPos < bottom) {
+        document.querySelectorAll('.nav-links a').forEach(a => {
+          a.style.borderBottomColor = 'transparent';
+          a.style.color = '';
+        });
+        const activeLink = document.querySelector(`.nav-links a[href="#${id}"]`);
+        if (activeLink) {
+          activeLink.style.color = 'var(--gold)';
+          activeLink.style.borderBottomColor = 'var(--gold)';
+        }
+      }
+    });
+  });
+</script>
+</body>
+</html>

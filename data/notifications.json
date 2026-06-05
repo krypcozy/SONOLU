@@ -1,0 +1,12 @@
+[
+  {
+    "date": "2026-06-05",
+    "title": "Local Backend Activated",
+    "message": "The website now serves notifications, policy pages, donation pages, and RSVP functionality locally without redirecting to an external domain."
+  },
+  {
+    "date": "2026-06-01",
+    "title": "RSVP Support Live",
+    "message": "Event registration is now handled by the local backend, and all RSVP submissions are saved to the local data store."
+  }
+]

@@ -1,0 +1,12 @@
+{
+  "name": "sono-backend",
+  "version": "1.0.0",
+  "description": "Local backend for SONO site with RSVP, notifications, donate, and policy routes.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
